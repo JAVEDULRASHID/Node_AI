@@ -10,3 +10,21 @@
 ---
 ### An overview of the project workflow 
 ![flow_chart](./images/flow_chart.jpg) 
+
+### Camera sensor node
+- This node is connected to a camera sensor which captures data from the environment.
+- The captured frame data will either be pre-processed or directly feed into the message stream in the form of data objects (offers) through the output pin of the concerned node instance.
+- More information about the structure of the data fields inside the data objects will be updated later as per the requirements.
+
+### AI Node
+
+- The AI node in our case consist of an object detection model (currently [Yolov11](https://docs.ultralytics.com/models/yolo11/)) for detection of objects (vehicle class). Tracking will also be added at some later point depecnding on the output requirements from the AI model for downstream applications.
+- The input pin of the AI node demands the image data objects to be in a certain format that is compatible with the Yolov11 model. 
+- Configuration files (instance.json and specification.json) have to be created according to the intended behviour of the node.
+- The AI node will publish the bounding box coordinates along with the class and confidence score of the detected object from the output pin into the message stream.
+### Visualization Node
+-   This node is responsible for visualizing the detected objects in the frame.
+- It will subscribe to the output data from the AI node and also subscribe to the source image frame data. (Synchronous operation between image frame and the output data from 2 different nodes in case of visualization node is an open question to me at the moment).
+- This section or node will be updated at a later point as we gain more insights into the capabilites of the AI Node.
+
+
