@@ -9,7 +9,7 @@
 
 ---
 ### An overview of an example workflow 
-![flow_chart](./images/flow_chart.jpg) 
+![flow_chart](./images/new_chart.jpg) 
 
 ### Camera sensor node
 - This node is connected to a camera sensor which captures data from the environment.
@@ -17,7 +17,7 @@
 - Other nodes that want to process this data, either in part or in full, will subscribe to this camera sensor node.
 - More information about the structure of the data fields inside the data objects will be updated later as per the requirements.
 
-### AI Node
+### Object Detector Node
 
 - The AI node in our case consist of an object detection model (currently [Yolov11](https://docs.ultralytics.com/models/yolo11/)) for detection of objects (vehicle class). Tracking will also be added to the node with the option of turning it ON or OFF in the instance file depending on the output requirements from the AI model for downstream applications.
 - The input pin of the AI node demands the image data objects to be in a certain format that is compatible with the Yolov11 model (atleast for the initial part of creation of this node for simplicity).
