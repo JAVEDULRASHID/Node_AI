@@ -8,7 +8,7 @@
 </div>
 
 ---
-### An overview of the project workflow 
+### An overview of an example workflow 
 ![flow_chart](./images/flow_chart.jpg) 
 
 ### Camera sensor node
@@ -18,10 +18,10 @@
 
 ### AI Node
 
-- The AI node in our case consist of an object detection model (currently [Yolov11](https://docs.ultralytics.com/models/yolo11/)) for detection of objects (vehicle class). Tracking will also be added at some later point depecnding on the output requirements from the AI model for downstream applications.
-- The input pin of the AI node demands the image data objects to be in a certain format that is compatible with the Yolov11 model. 
+- The AI node in our case consist of an object detection model (currently [Yolov11](https://docs.ultralytics.com/models/yolo11/)) for detection of objects (vehicle class). Tracking will also be added to the node with the option of turning it ON or OFF in the instance file depending on the output requirements from the AI model for downstream applications.
+- The input pin of the AI node demands the image data objects to be in a certain format that is compatible with the Yolov11 model (atleast for the initial part of creation of this node for simplicity). Later, the code will be modified to do the pre-processing of the input data within the node for making it compatible with general applications.
 - Configuration files (instance.json and specification.json) have to be created according to the intended behviour of the node.
-- The AI node will publish the bounding box coordinates along with the class and confidence score of the detected object from the output pin into the message stream.
+- The AI node will publish the bounding box coordinates along with the class and confidence score of the detected object from the output pin along with the provision of tracking ID into the message stream.
 ### Visualization Node
 -   This node is responsible for visualizing the detected objects in the frame.
 - It will subscribe to the output data from the AI node and also subscribe to the source image frame data. (Synchronous operation between image frame and the output data from 2 different nodes in case of visualization node is an open question to me at the moment).
